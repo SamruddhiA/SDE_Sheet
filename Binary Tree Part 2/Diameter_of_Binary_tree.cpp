@@ -25,21 +25,29 @@ struct TreeNode
 class Solution
 {
 public:
-    int height(TreeNode *node, int &dia)
+    int result = 0;
+
+    int height(TreeNode *root)
     {
-        if (node == NULL)
+        if (root == NULL)
         {
             return 0;
         }
-        int lh = height(node->left, dia);
-        int rh = height(node->right, dia);
-        dia = max(dia, lh + rh);
+
+        int lh = height(root->left);
+        int rh = height(root->right);
+
+        result = max(result, (1 + lh + rh));
+
         return 1 + max(lh, rh);
     }
+
     int diameterOfBinaryTree(TreeNode *root)
     {
-        int diameter = 0;
-        height(root, diameter);
-        return diameter;
+        // Write Your Code Here.
+
+        int a = height(root);
+
+        return result;
     }
 };
